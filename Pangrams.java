@@ -10,29 +10,32 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Result {
-
-    /*
-     * Complete the 'pangrams' function below.
-     *
-     * The function is expected to return a STRING.
-     * The function accepts STRING s as parameter.
-     */
-
-    public static String pangrams(String s) {
-        boolean[] isLetterUsed = new boolean[26];
-        for (int i = 0; i < s.length(); i++) {
+class Result
+{
+    public static String pangrams(String s)
+    {
+        boolean[] letterUsage = new boolean[26];
+        
+        for (int i = 0; i < s.length(); i++)
+        {
             char ch = s.charAt(i);
-            if (Character.isLetter(ch)) {
+            
+            if (Character.isLetter(ch))
+            {
                 int index = Character.toUpperCase(ch) - 'A';
-                isLetterUsed[index] = true;
+                
+                letterUsage[index] = true;
             }
         }
-        for (boolean letterIsUsed : isLetterUsed) {
-            if (!letterIsUsed) {
+        
+        for (boolean isLetterUsed : letterUsage)
+        {
+            if (!isLetterUsed)
+            {
                 return "not pangram";
             }
         }
+        
         return "pangram";
     }
 }
